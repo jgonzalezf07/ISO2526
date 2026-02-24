@@ -21,7 +21,7 @@ if [ $# -ne 2 ]; then
 fi
 
 
-for ((contador=0; contador<=$2; contador++)); do
+for ((contador=1; contador<=$2; contador++)); do
 
 read -p "Dime que operación quieres hacer: " op op1 op2
 
@@ -35,22 +35,22 @@ case $op in
 	;;
 
 	"R")
-                res=$(($op1 - $op2))
-                echo "$op1 - $op2 = $res "
+        res=$(($op1 - $op2))
+        echo "$op1 - $op2 = $res "
 		echo "$op $op1 $op2" >>$1
 
         ;;
 
 	"M")
-                res=$(($op1*$op2))
-                echo "$op1 * $op2 = $res "
+        res=$(($op1*$op2))
+        echo "$op1 * $op2 = $res "
 		echo "$op $op1 $op2" >>$1
 
         ;;
 
 	"D")
-                res=$(($op1/$op2))
-                echo "$op1 / $op2 = $res "
+        res=$(($op1/$op2))
+        echo "$op1 / $op2 = $res "
 		echo "$op $op1 $op2" >>$1 
         ;;
 
@@ -58,19 +58,9 @@ case $op in
 		echo "Saliendo..."
 		exit
 	;;
-
-	"B")
-		>$1
-		echo "El fichero se ha vaciado correctamente"
-	;;
-
-	*)
-		echo "Error al dar la orden..."
-		break
-	;;
+	
 esac
-
-	echo "Has realizado $contador operaciones"
-	cat $1
-
 done
+
+echo "Has realizado $contador operaciones"
+cat $1
